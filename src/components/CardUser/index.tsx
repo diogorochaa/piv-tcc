@@ -2,9 +2,9 @@ import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 import { HStack, Heading, Image, Text, VStack, Icon } from 'native-base'
 import { Entypo } from '@expo/vector-icons'
 
-type Props = TouchableOpacityProps & {}
+type Props = TouchableOpacityProps
 
-export function DoctorCard({ ...rest }: Props) {
+export function CardUser({ ...rest }: Props) {
   return (
     <TouchableOpacity {...rest}>
       <HStack bg="gray.200" alignItems="center" p={4} rounded="md" mb={3}>

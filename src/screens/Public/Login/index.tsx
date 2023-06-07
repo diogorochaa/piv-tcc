@@ -64,8 +64,7 @@ export function Login() {
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
-      showsVerticalScrollIndicator={false}
-    >
+      showsVerticalScrollIndicator={false}>
       <VStack flex={1} px={10} pb={16}>
         <LogoSvg />
         <Center>
@@ -73,8 +72,7 @@ export function Login() {
             mb={6}
             fontSize="xl"
             color="fuchsia.800"
-            fontFamily="heading"
-          >
+            fontFamily="heading">
             Acesse sua conta
           </Heading>
           <Controller

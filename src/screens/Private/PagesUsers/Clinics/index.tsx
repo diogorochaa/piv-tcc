@@ -63,16 +63,14 @@ export function Clinics() {
           scrollEnabled
           minZoomLevel={5}
           maxZoomLevel={30}
-          customMapStyle={mapStyle}
-        >
+          customMapStyle={mapStyle}>
           <Marker
             coordinate={{
               latitude: location.coords.latitude,
               longitude: location.coords.longitude,
             }}
             title="Meu local"
-            description="Localização atual"
-          >
+            description="Localização atual">
             <Image
               style={styles.avatar}
               alt="Diogo Rocha"

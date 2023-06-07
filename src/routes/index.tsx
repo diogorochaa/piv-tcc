@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import { Box, useTheme } from 'native-base'
 import { onAuthStateChanged } from 'firebase/auth'
 
 import { auth } from '../services/firebase'
 import { AuthRoutes } from './auth.routes'
-import { AppRoutes } from './app.routes'
+// import { UsersRoutes } from './users.routes'
+import { DoctorsRoutes } from './doctors.routes'
 
 export function Routes() {
   const { colors } = useTheme()
@@ -28,7 +29,7 @@ export function Routes() {
   return (
     <NavigationContainer theme={theme}>
       <Box flex={1} backgroundColor="background">
-        {user ? <AppRoutes /> : <AuthRoutes />}
+        {user ? <DoctorsRoutes /> : <AuthRoutes />}
       </Box>
     </NavigationContainer>
   )

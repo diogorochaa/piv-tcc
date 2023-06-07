@@ -3,8 +3,8 @@ import { TouchableOpacity } from 'react-native'
 import { Center, ScrollView, VStack, Skeleton, Heading } from 'native-base'
 import * as ImagePicker from 'expo-image-picker'
 
-import { ScreenHeader } from '../../../components/ScreenHeader'
-import { UserPhoto } from '../../../components/UserPhoto'
+import { ScreenHeader } from '../../../../components/ScreenHeader'
+import { UserPhoto } from '../../../../components/UserPhoto'
 
 const PHOTO_SIZE = 33
 
@@ -62,8 +62,7 @@ export function Profile() {
               mt={12}
               mb={2}
               fontSize="md"
-              alignSelf={'flex-start'}
-            >
+              alignSelf={'flex-start'}>
               Alterar foto
             </Heading>
           </TouchableOpacity>

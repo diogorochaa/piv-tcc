@@ -5,12 +5,12 @@ import { HStack, Heading, VStack } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
 import { signOut } from 'firebase/auth'
-import { auth } from '../../../services/firebase'
-import { MenuHome } from '../../../components/MenuHome'
-import { AppRoutesProps } from '../../../routes/app.routes'
+import { auth } from '../../../../services/firebase'
+import { MenuHome } from '../../../../components/MenuHome'
+import { UsersRoutesProps } from '../../../../routes/users.routes'
 
 export function Home() {
-  const navigation = useNavigation<AppRoutesProps>()
+  const navigation = useNavigation<UsersRoutesProps>()
 
   function handleLogout() {
     signOut(auth)
@@ -28,14 +28,6 @@ export function Home() {
     navigation.navigate('shedulingDetail')
   }
 
-  function handleRecords() {
-    navigation.navigate('record')
-  }
-
-  function handleChat() {
-    navigation.navigate('chat')
-  }
-
   return (
     <VStack flex={1} bg={'fuchsia.800'}>
       <VStack px={8} bg="fuchsia.800" pt={12}>
@@ -43,8 +35,7 @@ export function Home() {
           justifyContent={'space-between'}
           mt={4}
           mb={8}
-          alignItems={'center'}
-        >
+          alignItems={'center'}>
           <Heading color="white" fontSize="xl" flexShrink={1}>
             Bem vindo, Diogo
           </Heading>
@@ -63,7 +54,7 @@ export function Home() {
         <MenuHome
           icon="file-document-edit"
           title="Prontuário"
-          route={handleRecords}
+          route={handleDoctor}
         />
         <MenuHome
           icon="hospital-building"
@@ -73,7 +64,7 @@ export function Home() {
         <MenuHome
           icon="chat-processing-outline"
           title="Chat"
-          route={handleChat}
+          route={handleDoctor}
         />
         <MenuHome icon="book-open" title="Consultas" route={handleSheduling} />
       </HStack>

@@ -2,14 +2,14 @@ import React from 'react'
 import { HStack, Heading, VStack } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
-import { Calendar } from '../../../components/Calendar'
+import { Calendar } from '../../../../components/Calendar'
 
 import { TouchableOpacity } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { AppRoutesProps } from '../../../routes/app.routes'
+import { UsersRoutesProps } from '../../../../routes/users.routes'
 
 export function ShedulingDetail() {
-  const navigation = useNavigation<AppRoutesProps>()
+  const navigation = useNavigation<UsersRoutesProps>()
 
   function handleGoBack() {
     navigation.navigate('doctorDetail')
@@ -25,7 +25,7 @@ export function ShedulingDetail() {
         </HStack>
         <HStack justifyContent={'center'} mt={4} mb={8} alignItems={'center'}>
           <Heading color="white" fontSize="lg">
-            Vamos agendar?
+            Confira seus atendimentos
           </Heading>
         </HStack>
       </VStack>

@@ -1,11 +1,19 @@
 import { useNavigation } from '@react-navigation/native'
-import { Center, Heading, ScrollView, VStack } from 'native-base'
+import {
+  Center,
+  Checkbox,
+  HStack,
+  Heading,
+  ScrollView,
+  VStack,
+} from 'native-base'
 import { useForm, Controller } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth, db } from '../../../services/firebase'
-import { collection, addDoc } from 'firebase/firestore'
+import { doc, setDoc } from 'firebase/firestore'
+import { v4 as uuid } from 'uuid'
 
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
@@ -19,6 +27,8 @@ type FormDataProps = {
   email: string
   password: string
   password_confirm: string
+  paciente: string
+  profissional: string
 }
 
 const registerSchema = yup.object({
@@ -36,6 +46,8 @@ const registerSchema = yup.object({
     .string()
     .required('Confirmação de senha é obrigatória.')
     .oneOf([yup.ref('password'), ''], 'As senhas devem ser iguais.'),
+  paciente: yup.string().required('Tipo de usuário é obrigatório.'),
+  profissional: yup.string().required('Tipo de usuário é obrigatório.'),
 })
 
 export function Register() {
@@ -57,6 +69,8 @@ export function Register() {
     email,
     name,
     password,
+    paciente,
+    profissional,
   }: FormDataProps) => {
     try {
       // Criar conta de usuário com email e senha
@@ -70,10 +84,12 @@ export function Register() {
       const userId = userCredential.user.uid
 
       // Criar um novo documento na coleção "users" com os dados fornecidos
-      await addDoc(collection(db, 'users'), {
+      await setDoc(doc(db, 'users', uuid()), {
         userId,
         name,
         email,
+        paciente,
+        profissional,
       })
 
       Alert.alert('Sucesso!', 'Conta criada com sucesso!')
@@ -85,8 +101,7 @@ export function Register() {
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
-      showsVerticalScrollIndicator={false}
-    >
+      showsVerticalScrollIndicator={false}>
       <VStack flex={1} px={10} pb={16}>
         <LogoSvg />
         <Center>
@@ -94,10 +109,29 @@ export function Register() {
             mb={6}
             fontSize="xl"
             color="fuchsia.800"
-            fontFamily="heading"
-          >
+            fontFamily="heading">
             Crie sua conta
           </Heading>
+          <HStack space={4} padding={3}>
+            <Controller
+              control={control}
+              name="paciente"
+              render={({ field: { onChange, value } }) => (
+                <Checkbox onChange={onChange} value={value}>
+                  Paciente
+                </Checkbox>
+              )}
+            />
+            <Controller
+              control={control}
+              name="profissional"
+              render={({ field: { onChange, value } }) => (
+                <Checkbox onChange={onChange} value={value}>
+                  Profissional
+                </Checkbox>
+              )}
+            />
+          </HStack>
 
           <Controller
             control={control}

@@ -2,37 +2,37 @@ import { useState } from 'react'
 import { FlatList, HStack, Heading, Text, VStack } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
-import { DoctorCard } from '../../../components/DoctorCard'
-import { ScreenHeader } from '../../../components/ScreenHeader'
+import { CardUser } from '../../../../components/CardUser'
+import { ScreenHeader } from '../../../../components/ScreenHeader'
 
-import { AppRoutesProps } from '../../../routes/app.routes'
+import { DoctorsRoutesProps } from '../../../../routes/doctors.routes'
 
-export function Doctors() {
-  const [listDoctors] = useState(['Daniel', 'Diogo', 'Rafael', 'Ricar', 'João'])
+export function UsersList() {
+  const [listUsers] = useState(['Daniel', 'Diogo', 'Rafael', 'Ricar', 'João'])
 
-  const navigation = useNavigation<AppRoutesProps>()
+  const navigation = useNavigation<DoctorsRoutesProps>()
   function handleNavigateToDoctorDetails() {
-    navigation.navigate('doctorDetail')
+    navigation.navigate('userDetail')
   }
 
   return (
     <VStack flex={1}>
-      <ScreenHeader title="Lista de Médicos" />
+      <ScreenHeader title="Lista de Pacientes" />
       <HStack justifyContent="space-between" mb={5} mt={5} p={4}>
         <Heading color="gray.700" fontSize="md">
-          Profissionais
+          Pacientes
         </Heading>
         <Text color="gray.500" fontSize="sm">
-          {listDoctors.length} médicos
+          {listUsers.length} pacientes
         </Text>
       </HStack>
 
-      <DoctorCard />
+      <CardUser />
       <FlatList
-        data={listDoctors}
+        data={listUsers}
         keyExtractor={(item) => item}
         renderItem={({ item }) => (
-          <DoctorCard onPress={handleNavigateToDoctorDetails} />
+          <CardUser onPress={handleNavigateToDoctorDetails} />
         )}
         showsVerticalScrollIndicator={false}
         _contentContainerStyle={{ paddingBottom: 20 }}

@@ -25,8 +25,7 @@ function AuthRoutes() {
         contentStyle: {
           backgroundColor: 'transparent',
         },
-      }}
-    >
+      }}>
       <Screen name="login" component={Login} />
       <Screen name="register" component={Register} />
       <Screen name="resetPassword" component={Reset} />

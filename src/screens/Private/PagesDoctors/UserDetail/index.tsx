@@ -1,5 +1,5 @@
 import React from 'react'
-import { Feather, MaterialCommunityIcons } from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import {
   HStack,
   Heading,
@@ -12,20 +12,13 @@ import {
 import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import { AppRoutesProps } from '../../../routes/app.routes'
-import { Button } from '../../../components/Button'
+import { DoctorsRoutesProps } from '../../../../routes/doctors.routes'
 
-export function DoctorDetail() {
-  const navigation = useNavigation<AppRoutesProps>()
+export function UserDetail() {
+  const navigation = useNavigation<DoctorsRoutesProps>()
 
   function handleGoBack() {
-    navigation.navigate('doctors')
-  }
-  function handleClinicDetail() {
-    navigation.navigate('clinics')
-  }
-  function handleSheduling() {
-    navigation.navigate('shedulingDetail')
+    navigation.navigate('users')
   }
 
   return (
@@ -38,10 +31,9 @@ export function DoctorDetail() {
           justifyContent={'space-between'}
           mt={4}
           mb={8}
-          alignItems={'center'}
-        >
+          alignItems={'center'}>
           <Heading color="white" fontSize="lg" flexShrink={1}>
-            Dr. Daniel
+            Daniel
           </Heading>
 
           <HStack>
@@ -56,7 +48,7 @@ export function DoctorDetail() {
         <VStack p={8}>
           <Image
             w="full"
-            alt="Pefil do doutor"
+            alt="Pefil do usuario"
             h={80}
             source={{ uri: 'https://github.com/diogorochaa.png' }}
             mb={3}
@@ -69,15 +61,8 @@ export function DoctorDetail() {
               alignItems={'center'}
               justifyContent={'space-around'}
               mb={6}
-              mt={5}
-            >
+              mt={5}>
               <HStack>
-                <MaterialCommunityIcons
-                  onPress={handleClinicDetail}
-                  name="map-marker"
-                  size={24}
-                  color="#f15454"
-                />
                 <Text color="black" ml={2}>
                   Rua dos bobos, 0
                 </Text>
@@ -93,14 +78,6 @@ export function DoctorDetail() {
                 </Text>
               </HStack>
             </HStack>
-
-            <HStack justifyContent={'center'} mb={6}>
-              <Feather name="calendar" size={24} color="#f15454" />
-              <Text color="black" ml={2}>
-                08:00 - 18:00 Segunda a Sexta
-              </Text>
-            </HStack>
-            <Button title="Agendar consulta" onPress={handleSheduling} />
           </Box>
         </VStack>
       </ScrollView>
