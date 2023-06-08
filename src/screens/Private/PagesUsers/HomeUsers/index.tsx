@@ -3,8 +3,8 @@ import { TouchableOpacity } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { HStack, Heading, VStack } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
-
 import { signOut } from 'firebase/auth'
+
 import { auth } from '../../../../services/firebase'
 import { MenuHome } from '../../../../components/MenuHome'
 import { UsersRoutesProps } from '../../../../routes/users.routes'
