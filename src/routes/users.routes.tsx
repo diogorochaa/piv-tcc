@@ -8,9 +8,10 @@ import { useTheme } from 'native-base'
 
 import { Doctors } from '../screens/Private/PagesUsers/Doctors'
 import { DoctorDetail } from '../screens/Private/PagesUsers/DoctorDetail'
-import { Home } from '../screens/Private/PagesUsers/HomeUsers'
+import { HomeUsers } from '../screens/Private/PagesUsers/HomeUsers'
 import { Clinics } from '../screens/Private/PagesUsers/Clinics'
 import { ShedulingDetail } from '../screens/Private/PagesUsers/ShedulingDetail'
+import { Profile } from '../screens/Private/PagesUsers/Profile'
 
 type UsersRoutesType = {
   home: undefined
@@ -18,6 +19,7 @@ type UsersRoutesType = {
   doctorDetail: undefined
   clinics: undefined
   shedulingDetail: undefined
+  profile: undefined
 }
 
 export type UsersRoutesProps = BottomTabNavigationProp<UsersRoutesType>
@@ -41,7 +43,7 @@ function UsersRoutes() {
       }}>
       <Screen
         name="home"
-        component={Home}
+        component={HomeUsers}
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={iconSize} />
@@ -56,6 +58,19 @@ function UsersRoutes() {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="format-list-checks"
+              color={color}
+              size={iconSize}
+            />
+          ),
+        }}
+      />
+      <Screen
+        name="profile"
+        component={Profile}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="account"
               color={color}
               size={iconSize}
             />

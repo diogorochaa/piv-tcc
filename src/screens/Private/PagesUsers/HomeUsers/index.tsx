@@ -9,7 +9,7 @@ import { auth } from '../../../../services/firebase'
 import { MenuHome } from '../../../../components/MenuHome'
 import { UsersRoutesProps } from '../../../../routes/users.routes'
 
-export function Home() {
+export function HomeUsers() {
   const navigation = useNavigation<UsersRoutesProps>()
 
   function handleLogout() {
@@ -61,11 +61,7 @@ export function Home() {
           title="Clínicas"
           route={handleClinicDetail}
         />
-        <MenuHome
-          icon="chat-processing-outline"
-          title="Chat"
-          route={handleDoctor}
-        />
+
         <MenuHome icon="book-open" title="Consultas" route={handleSheduling} />
       </HStack>
     </VStack>

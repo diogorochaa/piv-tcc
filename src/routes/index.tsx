@@ -5,8 +5,8 @@ import { onAuthStateChanged } from 'firebase/auth'
 
 import { auth } from '../services/firebase'
 import { AuthRoutes } from './auth.routes'
-// import { UsersRoutes } from './users.routes'
-import { DoctorsRoutes } from './doctors.routes'
+import { UsersRoutes } from './users.routes'
+// import { DoctorsRoutes } from './doctors.routes'
 
 export function Routes() {
   const { colors } = useTheme()
@@ -29,7 +29,7 @@ export function Routes() {
   return (
     <NavigationContainer theme={theme}>
       <Box flex={1} backgroundColor="background">
-        {user ? <DoctorsRoutes /> : <AuthRoutes />}
+        {user ? <UsersRoutes /> : <AuthRoutes />}
       </Box>
     </NavigationContainer>
   )

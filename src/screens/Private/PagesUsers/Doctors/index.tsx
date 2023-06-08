@@ -2,15 +2,15 @@ import { useState } from 'react'
 import { FlatList, HStack, Heading, Text, VStack } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
-import { DoctorCard } from '../../../../components/CardUser'
+import { CardUser } from '../../../../components/CardUser'
 import { ScreenHeader } from '../../../../components/ScreenHeader'
 
-import { AppRoutesProps } from '../../../../routes/app.routes'
+import { UsersRoutesProps } from '../../../../routes/users.routes'
 
 export function Doctors() {
   const [listDoctors] = useState(['Daniel', 'Diogo', 'Rafael', 'Ricar', 'João'])
 
-  const navigation = useNavigation<AppRoutesProps>()
+  const navigation = useNavigation<UsersRoutesProps>()
   function handleNavigateToDoctorDetails() {
     navigation.navigate('doctorDetail')
   }
@@ -27,12 +27,12 @@ export function Doctors() {
         </Text>
       </HStack>
 
-      <DoctorCard />
+      <CardUser />
       <FlatList
         data={listDoctors}
         keyExtractor={(item) => item}
         renderItem={({ item }) => (
-          <DoctorCard onPress={handleNavigateToDoctorDetails} />
+          <CardUser onPress={handleNavigateToDoctorDetails} />
         )}
         showsVerticalScrollIndicator={false}
         _contentContainerStyle={{ paddingBottom: 20 }}
